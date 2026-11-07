@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Manifest & Resumes | Eternal Cosmic</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-space: #070913;
+            --bg-surface-glass: rgba(18, 22, 41, 0.7);
+            --border-glass: rgba(147, 112, 219, 0.25);
+            --accent-nebula: #9d4edd;
+            --accent-starlight: #e0aaff;
+            --accent-crystal: #72efdd;
+            --text-primary: #f8f9fa;
+            --text-secondary: #a0aabf;
+            --font-heading: 'Cinzel', 'Trajan Pro', serif;
+            --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-code: 'Fira Code', monospace;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-space);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+            background: rgba(7, 9, 19, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-glass);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-logo {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            color: var(--accent-crystal);
+            text-decoration: none;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-crystal);
+        }
+
+        header {
+            padding: 3rem 2rem 2rem 2rem;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 2.8rem;
+            letter-spacing: 3px;
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(45deg, var(--text-primary), var(--accent-crystal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-subtitle {
+            color: var(--accent-starlight);
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Role Switcher Tabs */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: rgba(18, 22, 41, 0.6);
+            border: 1px solid var(--border-glass);
+            color: var(--text-secondary);
+            padding: 0.7rem 1.4rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-crystal);
+            color: var(--text-primary);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-crystal);
+            color: var(--bg-space);
+            border-color: var(--accent-crystal);
+            box-shadow: 0 0 15px rgba(114, 239, 221, 0.4);
+        }
+
+        /* Resume Cards Grid */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .resume-card {
+            background: var(--bg-surface-glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .resume-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-crystal);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-badge {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-crystal);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .card-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            margin: 0 0 1rem 0;
+            color: var(--text-primary);
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .actions-group {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .btn-preview {
+            background: rgba(114, 239, 221, 0.1);
+            border: 1px solid var(--accent-crystal);
+            color: var(--accent-crystal);
+        }
+
+        .btn-preview:hover {
+            background: var(--accent-crystal);
+            color: var(--bg-space);
+        }
+
+        .btn-download {
+            background: rgba(157, 78, 221, 0.15);
+            border: 1px solid var(--accent-nebula);
+            color: var(--accent-starlight);
+        }
+
+        .btn-download:hover {
+            background: var(--accent-nebula);
+            color: var(--text-primary);
+        }
+
+        /* Interactive Skill Matrix */
+        .skill-section {
+            background: var(--bg-surface-glass);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .section-heading {
+            font-family: var(--font-heading);
+            color: var(--accent-starlight);
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .skill-bar-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .skill-name {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .skill-val {
+            color: var(--accent-crystal);
+            font-family: var(--font-code);
+        }
+
+        .track {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-nebula), var(--accent-crystal));
+            border-radius: 4px;
+        }
+
+        /* PDF Preview Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(7, 9, 19, 0.9);
+            backdrop-filter: blur(16px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-viewer {
+            background: var(--bg-surface-glass);
+            border: 1px solid var(--accent-crystal);
+            border-radius: 16px;
+            width: 90%;
+            max-width: 950px;
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        }
+
+        .modal-header {
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-glass);
+            background: rgba(7, 9, 19, 0.6);
+        }
+
+        .modal-title-text {
+            font-family: var(--font-heading);
+            color: var(--accent-crystal);
+            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .modal-close-btn:hover {
+            color: var(--accent-crystal);
+        }
+
+        .pdf-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-glass);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="nav-logo">Eternal Cosmic</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Portal Home</a></li>
+            <li><a href="resumes.html" class="active">Resumes & Bio</a></li>
+            <li><a href="index.html#resort-partnerships">Residencies</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Professional Manifest</h1>
+        <div class="page-subtitle">Curated Credentials & Dynamic PDF Explorer</div>
+    </header>
+
+    <main>
+
+        <!-- Role Switcher Tabs -->
+        <div class="filter-container">
+            <button class="tab-btn active" onclick="filterSector('all')">All Disciplines</button>
+            <button class="tab-btn" onclick="filterSector('aerospace')">🚀 NASA & Aerospace</button>
+            <button class="tab-btn" onclick="filterSector('linguistics')">🌌 Sanskrit & Humanities</button>
+            <button class="tab-btn" onclick="filterSector('wellness')">🧘‍♀️ Somatic & Sound</button>
+        </div>
+
+        <!-- Resume Cards Grid -->
+        <div class="resume-grid">
+
+            <!-- Master Resume Card -->
+            <div class="resume-card" data-category="aerospace linguistics wellness">
+                <div>
+                    <div class="card-badge">Comprehensive Overview</div>
+                    <h2 class="card-title">Master Resume</h2>
+                    <p class="card-desc">
+                        Full interdisciplinary portfolio encompassing NASA Flight Operations preparation, Siemens NX virtualized CAD optimization, digital humanities schemas, and acoustic sound bath curation.
+                    </p>
+                </div>
+                <div class="actions-group">
+                    <button class="btn-action btn-preview" onclick="previewPDF('./Katie_Carlson_Master_Resume.pdf', 'Master Resume Preview')">
+                        👁 Preview PDF
+                    </button>
+                    <a href="./Katie_Carlson_Master_Resume.pdf" download target="_blank" rel="noopener" class="btn-action btn-download">
+                        📥 Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- NASA Federal Resume Card -->
+            <div class="resume-card" data-category="aerospace">
+                <div>
+                    <div class="card-badge">Aerospace & Flight Operations</div>
+                    <h2 class="card-title">NASA Federal Resume</h2>
+                    <p class="card-desc">
+                        Tailored specifically for NASA Flight Operations, C&DH systems engineering, orbital mechanics modeling, and x86_64 virtualization automation on ARM64 architectures.
+                    </p>
+                </div>
+                <div class="actions-group">
+                    <button class="btn-action btn-preview" onclick="previewPDF('./Katie_Carlson_NASA_Federal_Resume.pdf', 'NASA Federal Resume Preview')">
+                        👁 Preview PDF
+                    </button>
+                    <a href="./Katie_Carlson_NASA_Federal_Resume.pdf" download target="_blank" rel="noopener" class="btn-action btn-download">
+                        📥 Download
+                    </a>
+                </div>
+            </div>
+
+            <!-- Yoga & Sound Resume Card -->
+            <div class="resume-card" data-category="wellness">
+                <div>
+                    <div class="card-badge">Acoustic & Somatic Residencies</div>
+                    <h2 class="card-title">Yoga & Sound Resume</h2>
+                    <p class="card-desc">
+                        Curated for luxury eco-resort residencies, 200-Hour Vinyasa/Hatha alignment, 8-bowl 432Hz/528Hz quartz crystal acoustic matrix design, and neuro-somatic relaxation retreats.
+                    </p>
+                </div>
+                <div class="actions-group">
+                    <button class="btn-action btn-preview" onclick="previewPDF('./Katie_Carlson_Yoga_Sound_Resume.pdf', 'Yoga & Sound Practitioner Resume Preview')">
+                        👁 Preview PDF
+                    </button>
+                    <a href="./Katie_Carlson_Yoga_Sound_Resume.pdf" download target="_blank" rel="noopener" class="btn-action btn-download">
+                        📥 Download
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Interactive Competency & Skill Matrix -->
+        <section class="skill-section">
+            <h2 class="section-heading">⚡ Interdisciplinary Core Competencies</h2>
+            
+            <div class="skill-bar-item">
+                <div class="skill-info">
+                    <span class="skill-name">Orbital Mechanics & Telemetry Simulation</span>
+                    <span class="skill-val">96%</span>
+                </div>
+                <div class="track"><div class="fill" style="width: 96%;"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+                <div class="skill-info">
+                    <span class="skill-name">Siemens NX 1984 Parametric CAD & ARM64 Automation</span>
+                    <span class="skill-val">92%</span>
+                </div>
+                <div class="track"><div class="fill" style="width: 92%;"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+                <div class="skill-info">
+                    <span class="skill-name">Pāṇinian Sanskrit Grammatical Schema Validation</span>
+                    <span class="skill-val">88%</span>
+                </div>
+                <div class="track"><div class="fill" style="width: 88%;"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+                <div class="skill-info">
+                    <span class="skill-name">8-Bowl Acoustic Wave Resonance (432Hz / 528Hz)</span>
+                    <span class="skill-val">98%</span>
+                </div>
+                <div class="track"><div class="fill" style="width: 98%;"></div></div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- In-Browser PDF Modal Viewer -->
+    <div class="modal-overlay" id="pdfModalOverlay" onclick="closePDFModalOnOverlay(event)">
+        <div class="modal-viewer">
+            <div class="modal-header">
+                <h3 class="modal-title-text" id="pdfModalTitle">PDF Preview</h3>
+                <button class="modal-close-btn" onclick="closePDFModal()">✕</button>
+            </div>
+            <iframe src="" class="pdf-frame" id="pdfModalIframe" title="PDF Document Viewer"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Eternal Cosmic. Curated by Katie Carlson. Built for Infinite Learning across the Spheres.
+    </footer>
+
+    <script>
+        /* Role Filter Functionality */
+        function filterSector(sector) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.resume-card');
+            cards.forEach(card => {
+                const categories = card.getAttribute('data-category');
+                if (sector === 'all' || categories.includes(sector)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        /* In-Browser PDF Preview Modal Functionality */
+        function previewPDF(pdfUrl, titleText) {
+            document.getElementById('pdfModalTitle').textContent = titleText;
+            document.getElementById('pdfModalIframe').src = pdfUrl;
+            document.getElementById('pdfModalOverlay').classList.add('active');
+        }
+
+        function closePDFModal() {
+            document.getElementById('pdfModalOverlay').classList.remove('active');
+            document.getElementById('pdfModalIframe').src = '';
+        }
+
+        function closePDFModalOnOverlay(e) {
+            if (e.target.id === 'pdfModalOverlay') {
+                closePDFModal();
+            }
+        }
+    </script>
+</body>
+</html>
